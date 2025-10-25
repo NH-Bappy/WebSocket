@@ -6,6 +6,30 @@
     <title>chat App</title>
 </head>
 <body>
-    <h1>Chatting</h1>
+    <h1>Chatting...</h1>
+    <input type="text" id="message" placeholder="enter message">
+    <button id="send" style="cursor: pointer;">send message</button>
+
+
+
+
+
+<!-- connect socket with clint with socket server -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    const messageInput = document.getElementById('message');
+    const sendBtn = document.getElementById('send')
+
+    sendBtn.addEventListener('click' , (e) => {
+        const sendMessage = messageInput.value;
+        console.log(sendMessage);
+        // send user-message to server site
+        // socket.emit('')[this send message to server site]
+        // user - message [this is custom name what ever you want]
+        socket.emit('user-message' , sendMessage)
+    })
+</script>
 </body>
 </html>

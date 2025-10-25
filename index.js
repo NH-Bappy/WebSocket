@@ -4,7 +4,9 @@ const app = express();
 const server = createServer(app);
 const path = require("path")
 const port = 8080;
-
+// create socket io server
+const { Server } = require('socket.io');
+const io = new Server(server);
 
 
 
@@ -17,7 +19,21 @@ app.get("/", (req, res) => {
 
 
 
+//handle socket io
 
+// when new user come lunch the callback socket
+io.on('connection', (socket) => {
+    // console.log("A new user has connected" , socket.id)
+
+    // catch the message from front-end we use this
+    // socket.on[this is use for graving message from front-end]
+    // "user-message"[The custom name you give in the front end]
+    // sendMessage[the message]
+    
+    socket.on("user-message", (sendMessage) => {
+        console.log("A new User message", sendMessage)
+    })
+});
 
 
 
@@ -31,7 +47,7 @@ server.listen(port , () => {
 
 
 
-
+// git push origin main
 
 
 
