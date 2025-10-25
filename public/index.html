@@ -9,7 +9,7 @@
     <h1>Chatting...</h1>
     <input type="text" id="message" placeholder="enter message">
     <button id="send" style="cursor: pointer;">send message</button>
-
+    <div id="block"></div>
 
 
 
@@ -20,7 +20,17 @@
     const socket = io();
 
     const messageInput = document.getElementById('message');
-    const sendBtn = document.getElementById('send')
+    const sendBtn = document.getElementById('send');
+    const allMessage = document.getElementById('block')
+
+
+    socket.on("message" , (sendMessage) => {
+        const p = document.createElement("p");
+        p.innerText = sendMessage;
+        allMessage.appendChild(p);
+    })
+
+
 
     sendBtn.addEventListener('click' , (e) => {
         const sendMessage = messageInput.value;

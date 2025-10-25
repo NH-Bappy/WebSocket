@@ -31,11 +31,13 @@ io.on('connection', (socket) => {
     // sendMessage[the message]
 
     socket.on("user-message", (sendMessage) => {
-        console.log("A new User message", sendMessage)
+        // console.log("A new User message", sendMessage)
+        // io.emit()[this is use for sending something]
+        io.emit('message', sendMessage);    
     })
 });
 
-console.log('')
+
 
 
 
