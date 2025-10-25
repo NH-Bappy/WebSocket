@@ -29,12 +29,13 @@ io.on('connection', (socket) => {
     // socket.on[this is use for graving message from front-end]
     // "user-message"[The custom name you give in the front end]
     // sendMessage[the message]
-    
+
     socket.on("user-message", (sendMessage) => {
         console.log("A new User message", sendMessage)
     })
 });
 
+console.log('')
 
 
 
